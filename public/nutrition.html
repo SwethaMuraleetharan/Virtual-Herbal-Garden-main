@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <title>Herbal Plants Gallery</title>
+    <style>
+        /* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #befd8839;
+    padding: 20px;
+}
+
+/* Container for the gallery */
+.gallery-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: normal;
+    color: #044c1998;
+    font-family: 'Pacifico', cursive; /* Apply the new font */
+}
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Limit gallery width to ensure proper scaling on large screens */
+}
+
+/* Plant Card Styling */
+.plant-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.voice-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.voice-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Overlay Effect */
+.plant-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+.plant-card:hover .plant-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Make modal more responsive */
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-img {
+    width: 100%;
+    max-width: 300px; /* Image width for modal */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #333;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    .plant-card {
+        height: auto;
+    }
+
+    .plant-image {
+        height: 150px; /* Smaller height for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust title size on smaller screens */
+    }
+
+    .modal-content {
+        width: 95%; /* Make modal full width on small screens */
+        padding: 20px;
+    }
+
+    .modal-img {
+        max-width: 300px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Nutritional Plants</h1>
+        <div class="gallery">
+            <!-- Plant Card -->
+            <div class="plant-card" onclick="showDescription('Moringa', 'https://t3.ftcdn.net/jpg/03/12/95/48/360_F_312954833_Tl3uz9792SH0Sy0k7HuW5QdGL2vPNoGh.jpg', 'Moringa is packed with essential nutrients like vitamins A, C, and E, calcium, iron, and potassium, making it a powerful antioxidant and anti-inflammatory herb. It helps boost the immune system, improve digestion, and support heart and bone health. Additionally, Moringa promotes healthy skin, hair, and boosts energy levels.')">
+                <img src="https://t3.ftcdn.net/jpg/03/12/95/48/360_F_312954833_Tl3uz9792SH0Sy0k7HuW5QdGL2vPNoGh.jpg" alt="Moringa" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Moringa</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Tulsi', 'https://mtseedbank.in/wp-content/uploads/2024/08/cinnamon_basil_mtseedbank_001.jpg', 'Basil is rich in vitamins A, C, and K, providing powerful antioxidant and anti-inflammatory benefits. It supports immune function, promotes healthy digestion, and helps manage stress. Additionally, basil has antibacterial properties that aid in fighting infections and improving skin health.')">
+                <img src="https://mtseedbank.in/wp-content/uploads/2024/08/cinnamon_basil_mtseedbank_001.jpg" alt="tulsi" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Tulsi</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Mint', 'https://cdn.britannica.com/46/139046-050-68C68E11/Peppermint.jpg', 'Mint is rich in vitamins A, C, and antioxidants, offering anti-inflammatory and digestive benefits. It helps soothe indigestion, reduce nausea, and promote healthy skin. Mint also supports respiratory health by clearing nasal passages and improving breathing.')">
+                <img src="https://cdn.britannica.com/46/139046-050-68C68E11/Peppermint.jpg" alt="Mint" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Mint</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Hibiscus', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK8dJLpO-iDN46rHoIs2gX6aadKuDAirCZJA&s', 'Hibiscus is rich in vitamin C, antioxidants, and minerals like calcium and iron, which support immune health and skin vitality. It helps lower blood pressure, improve cholesterol levels, and promote heart health. Additionally, hibiscus has anti-inflammatory properties that aid in digestion and skin rejuvenation.')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK8dJLpO-iDN46rHoIs2gX6aadKuDAirCZJA&s" alt="Hibiscus" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Hibiscus</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Turmeric', 'https://t3.ftcdn.net/jpg/03/30/30/94/360_F_330309413_1GCy01jOT01AQWNVLoMQSluhmmXNSKFJ.jpg', 'Turmeric is rich in curcumin, a powerful antioxidant with anti-inflammatory properties that support joint and heart health. It boosts the immune system, aids in digestion, and promotes skin health by reducing acne and pigmentation. Additionally, turmeric may help improve brain function and reduce the risk of chronic diseases.')">
+                <img src="https://t3.ftcdn.net/jpg/03/30/30/94/360_F_330309413_1GCy01jOT01AQWNVLoMQSluhmmXNSKFJ.jpg" alt="Turmeric" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Turmeric</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Ashwagantha', 'https://rukminim2.flixcart.com/image/720/864/xif0q/plant-seed/h/n/c/55-ashvagandha-seeds-ashwagandha-plants-seeds-wequality-original-imagp8yn7mz2wufz.jpeg?q=60&crop=false', 'Ashwagandha is rich in antioxidants and bioactive compounds that help reduce stress and improve mood. It supports immune health, boosts energy levels, and enhances stamina. Additionally, it promotes mental clarity, cognitive function, and may aid in balancing hormones.')">
+                <img src="https://rukminim2.flixcart.com/image/720/864/xif0q/plant-seed/h/n/c/55-ashvagandha-seeds-ashwagandha-plants-seeds-wequality-original-imagp8yn7mz2wufz.jpeg?q=60&crop=false" alt="Ashwagantha" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Ashwagantha</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Fenugreek', 'https://media.istockphoto.com/id/1285888022/photo/fenugreek-seeds-and-plant-on-a-old-wooden-background.jpg?s=612x612&w=0&k=20&c=uRUQPgQtEevgbrh4H-Msh5lv7HibigXNIQd9fqfdkRk=', 'Fenugreek is rich in fiber, iron, and magnesium, which support digestive health and regulate blood sugar levels. It helps promote milk production in breastfeeding mothers and improves cholesterol levels. Additionally, fenugreek has antioxidant properties contribute to healthy skin and hair.')">
+                <img src="https://media.istockphoto.com/id/1285888022/photo/fenugreek-seeds-and-plant-on-a-old-wooden-background.jpg?s=612x612&w=0&k=20&c=uRUQPgQtEevgbrh4H-Msh5lv7HibigXNIQd9fqfdkRk=" alt="Fenugreek" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Fenugreek</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Curry leaves', 'https://media.istockphoto.com/id/1087510858/photo/curry-leaves.jpg?s=612x612&w=0&k=20&c=ix42iQk5-_Ia4O1BHVWYiCGBEHKQ5jTdmMGBDNB3YyI=', 'Curry leaves are rich in vitamins A, C, and E, as well as iron and calcium, promoting healthy skin, hair, and bone health. They aid in digestion, improve liver function, and help regulate blood sugar levels. Additionally, curry leaves possess antioxidant and anti-inflammatory properties that boost overall immunity.')">
+                <img src="https://media.istockphoto.com/id/1087510858/photo/curry-leaves.jpg?s=612x612&w=0&k=20&c=ix42iQk5-_Ia4O1BHVWYiCGBEHKQ5jTdmMGBDNB3YyI=" alt="Curry leaves" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Curry Leaves</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Plant Image" class="modal-img">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    <script>
+        // Function to show description in modal, display the image, and play the plant name
+function showDescription(plantName, plantImage, plantDescription) {
+    // Set modal content
+    document.getElementById('modalTitle').textContent = plantName;
+    document.getElementById('modalImg').src = plantImage;
+    document.getElementById('modalDescription').textContent = plantDescription;
+    
+    // Display the modal
+    document.getElementById('plantModal').style.display = 'flex';
+    
+    // Speak the plant name
+    playVoice(plantName);
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('plantModal').style.display = 'none';
+}
+
+// Function to play voice
+function playVoice(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US"; // Language
+    window.speechSynthesis.speak(speech);
+}
+
+// Close modal if the user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('plantModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+</script>
+</body>
+</html>

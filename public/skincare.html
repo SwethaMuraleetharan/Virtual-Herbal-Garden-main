@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <title>Herbal Plants Gallery</title>
+    <style>
+        /* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #befd8839;
+    padding: 20px;
+}
+
+/* Container for the gallery */
+.gallery-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: normal;
+    color: #044c1998;
+    font-family: 'Pacifico', cursive; /* Apply the new font */
+}
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Limit gallery width to ensure proper scaling on large screens */
+}
+
+/* Plant Card Styling */
+.plant-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.voice-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.voice-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Overlay Effect */
+.plant-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+.plant-card:hover .plant-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Make modal more responsive */
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-img {
+    width: 100%;
+    max-width: 300px; /* Image width for modal */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #333;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    .plant-card {
+        height: auto;
+    }
+
+    .plant-image {
+        height: 150px; /* Smaller height for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust title size on smaller screens */
+    }
+
+    .modal-content {
+        width: 95%; /* Make modal full width on small screens */
+        padding: 20px;
+    }
+
+    .modal-img {
+        max-width: 300px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Skincare Herbs</h1>
+        <div class="gallery">
+            <!-- Plant Card -->
+            <div class="plant-card" onclick="showDescription('Neem', 'https://manjariwellness.in/images/neem.jpg', 'Anti-Acne Properties: Its antibacterial properties help reduce acne and prevent breakouts.Skin Purification: Neem cleanses the skin by removing toxins and impurities. Hydration: It soothes dry skin by locking in moisture.')">
+                <img src="https://manjariwellness.in/images/neem.jpg" alt="Neem" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Neem</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Aloe Vera', 'https://images.ctfassets.net/mgaihfszrtka/7p8kC54ROraaIO0iItVBna/b31aacca043a919ec87a9b35b1758413/closeupaloeveraplantoutd_793774.jpg', 'Aloe vera is a natural moisturizer that hydrates and soothes the skin, making it ideal for dry or irritated skin. Its anti-inflammatory properties help reduce redness, acne, and sunburn. Rich in antioxidants, aloe vera promotes healing and enhances skin elasticity, giving a youthful glow.')">
+                <img src="https://images.ctfassets.net/mgaihfszrtka/7p8kC54ROraaIO0iItVBna/b31aacca043a919ec87a9b35b1758413/closeupaloeveraplantoutd_793774.jpg" alt="Aloevera" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Aloe Vera</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Turmeric', 'https://t3.ftcdn.net/jpg/03/30/30/94/360_F_330309413_1GCy01jOT01AQWNVLoMQSluhmmXNSKFJ.jpg', 'Turmeric has an anti-inflammatory and antibacterial properties help reduce acne and soothe irritated skin. Its antioxidants combat signs of aging and improve skin tone, giving a natural glow. Turmeric also aids in reducing dark spots and healing wounds, promoting overall skin health.')">
+                <img src="https://t3.ftcdn.net/jpg/03/30/30/94/360_F_330309413_1GCy01jOT01AQWNVLoMQSluhmmXNSKFJ.jpg" alt="Turmeric" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Turmeric</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Basil', 'https://mtseedbank.in/wp-content/uploads/2024/08/cinnamon_basil_mtseedbank_001.jpg', 'Tulsi (Holy Basil) purifies the skin by removing toxins and preventing acne with its antibacterial properties. It soothes irritation, reduces redness, and protects against infections. Rich in antioxidants, tulsi also delays signs of aging, promoting healthy and radiant skin.')">
+                <img src="https://mtseedbank.in/wp-content/uploads/2024/08/cinnamon_basil_mtseedbank_001.jpg" alt="Basil" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Basil</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Sandalwood', 'https://t4.ftcdn.net/jpg/02/65/33/37/360_F_265333795_UBMny6xDQ3jUDFUQWri8N5WlcUTsV1Hq.jpg', 'Sandalwood is renowned for its skin-soothing properties, helping to calm irritation and reduce redness. It brightens the complexion by fading dark spots and blemishes. Additionally, its anti-inflammatory and antimicrobial properties make it effective for treating acne and promoting clear, healthy skin.')">
+                <img src="https://t4.ftcdn.net/jpg/02/65/33/37/360_F_265333795_UBMny6xDQ3jUDFUQWri8N5WlcUTsV1Hq.jpg" alt="Sandalwood" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Sandalwood</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Green Tea', 'https://media.istockphoto.com/id/1298140464/photo/close-up-fresh-tea-leaves.jpg?s=612x612&w=0&k=20&c=w4jY69WCY5kqfPD10dze4-EDPXfBnMvIjI-fy-5MXBU=', 'Green tea is rich in antioxidants that combat free radicals, reducing signs of aging like wrinkles and fine lines. Its anti-inflammatory properties soothe irritated skin and help manage acne. Additionally, green tea helps control excess oil and improves skin elasticity for a youthful glow.')">
+                <img src="https://media.istockphoto.com/id/1298140464/photo/close-up-fresh-tea-leaves.jpg?s=612x612&w=0&k=20&c=w4jY69WCY5kqfPD10dze4-EDPXfBnMvIjI-fy-5MXBU=" alt="Green Tea" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Green Tea Leaf</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Manjistha', 'https://www.planetayurveda.com/pa-wp-images/manjistha-planet.jpg', 'Manjistha is a powerful Ayurvedic herb known for its ability to purify the blood, promoting clear and radiant skin. It helps reduce pigmentation, dark spots, and acne scars, enhancing skin tone. Additionally, its anti-inflammatory and antibacterial properties soothe irritated skin and prevent breakouts.')">
+                <img src="https://www.planetayurveda.com/pa-wp-images/manjistha-planet.jpg" alt="Manjistha" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Manjistha</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Vetivear', 'https://manekancor.com/wp-content/uploads/2020/11/Vetiver.jpg', 'Vetiver, known for its cooling properties, soothes irritated skin and reduces inflammation. It deeply hydrates and nourishes, making it ideal for dry and aging skin. Additionally, its antibacterial properties help combat acne while promoting a smooth and rejuvenated complexion.')">
+                <img src="https://manekancor.com/wp-content/uploads/2020/11/Vetiver.jpg" alt="Veattiveru" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Vetiver</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Plant Image" class="modal-img">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    <script>
+        // Function to show description in modal, display the image, and play the plant name
+function showDescription(plantName, plantImage, plantDescription) {
+    // Set modal content
+    document.getElementById('modalTitle').textContent = plantName;
+    document.getElementById('modalImg').src = plantImage;
+    document.getElementById('modalDescription').textContent = plantDescription;
+    
+    // Display the modal
+    document.getElementById('plantModal').style.display = 'flex';
+    
+    // Speak the plant name
+    playVoice(plantName);
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('plantModal').style.display = 'none';
+}
+
+// Function to play voice
+function playVoice(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US"; // Language
+    window.speechSynthesis.speak(speech);
+}
+
+// Close modal if the user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('plantModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+</script>
+</body>
+</html>

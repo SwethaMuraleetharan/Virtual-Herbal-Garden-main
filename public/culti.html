@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Herbal Garden - Plant Info</title>
+  <style>
+    /* ===== Base Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4LFPVGtMGWrrjQUsnyDXLfqay6tWqP3Ckcg&s') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      padding: 40px;
+      color: #060606;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ===== Heading ===== */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #faf2f2;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    /* ===== Grid Layout ===== */
+    #plant-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* ===== Card Style (Glassmorphism) ===== */
+    .card {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-left: 5px solid #10b981;
+}
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-content h2 {
+      font-size: 1.6rem;
+      color: #065f46;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .card-content p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Plant Info - Cultivation and History</h1>
+  <div class="container" id="plant-container"></div>
+
+  <script>
+    const plants = [
+      {
+        name: "Tulsi",
+        tips: "Tulsi thrives in warm climates with well-drained soil and sunlight.",
+        history: "Used in Ayurvedic medicine for centuries and considered sacred in Indian households."
+      },
+      {
+        name: "Neem",
+        tips: "Needs full sunlight, tolerates dry and poor soil, and should be watered deeply once a week.",
+        history: "Known for its antibacterial and medicinal properties. Widely used in Ayurvedic treatments and natural pest control."
+      },
+      {
+        name: "Aloe Vera",
+        tips: "Prefers dry conditions and indirect sunlight. Water sparingly.",
+        history: "Aloe has been used since ancient Egypt for healing wounds and skin care."
+      },
+      {
+        name: "Ashwagandha",
+        tips: "Grows best in dry regions with well-drained soil and full sunlight.",
+        history: "Used in Ayurveda as a rejuvenator and stress reliever for over 3,000 years."
+      },
+      {
+        name: "Moringa",
+        tips: "Moringa prefers hot climates and grows well in sandy or loamy soil with good drainage. Water moderately.",
+        history: "Revered as the 'Miracle Tree', Moringa has been used in Ayurvedic medicine for over 4,000 years for its nutritional and healing properties."
+      },
+      {
+        name: "Mint",
+        tips: "Grows rapidly in moist, partly shaded areas. Regular trimming keeps it bushy.",
+        history: "Widely used in traditional medicine and cooking across cultures."
+      },
+      {
+        name: "Lemongrass",
+        tips: "Thrives in tropical climates with full sun and frequent watering.",
+        history: "Used in herbal teas and medicine to relieve anxiety and digestive issues."
+      },
+      {
+        name: "Hibiscus",
+        tips: "Grows best in tropical conditions with full sunlight and moist, well-drained soil. Prune regularly to encourage flowering.",
+        history: "Traditionally used in herbal teas and hair care in Indian and Egyptian cultures. Red hibiscus is associated with the goddess Kali in Hinduism."
+      },
+      {
+        name: "Fenugreek",
+        tips: "Best grown in cool climates with well-drained soil. Requires regular watering.",
+        history: "Has been cultivated since ancient times for both culinary and medicinal uses, especially for digestion."
+      },
+      {
+        name: "Clove",
+        tips: "Clove trees thrive in warm, humid climates with well-drained, rich loamy soil. They need partial shade and regular watering during dry periods.",
+        history: "Cloves have been used in Ayurveda and Chinese medicine for centuries. They are known for antiseptic and digestive properties."
+      },
+      {
+        name: "Coriander",
+        tips: "Needs loose, well-drained soil and moderate sunlight.",
+        history: "Used since ancient Egypt for culinary and medicinal purposes."
+      },
+      {
+        name: "Curry Leaves",
+        tips: "Prefers a sunny location and well-drained soil. Water moderately and trim occasionally to encourage bushy growth.",
+        history: "Deeply rooted in South Indian cuisine and Ayurveda, curry leaves are known for improving digestion and enhancing flavor."
+      }
+    ];
+
+    const container = document.getElementById('plant-container');
+
+    plants.forEach(plant => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="card-content">
+          <h2>${plant.name}</h2>
+          <p><strong>Cultivation Tips:</strong> ${plant.tips}</p>
+          <p><strong>Historical Significance:</strong> ${plant.history}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

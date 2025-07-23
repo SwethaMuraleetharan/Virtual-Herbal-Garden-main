@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <title>Herbal Plants Gallery</title>
+    <link rel="stylesheet" href="vg.css">
+    <style>
+        /* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #befd8839;
+    padding: 20px;
+}
+
+/* Container for the gallery */
+.gallery-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: normal;
+    color: #044c1998;
+    font-family: 'Pacifico', cursive; /* Apply the new font */
+}
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Limit gallery width to ensure proper scaling on large screens */
+}
+
+/* Plant Card Styling */
+.plant-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.voice-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.voice-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Overlay Effect */
+.plant-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+.plant-card:hover .plant-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Make modal more responsive */
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-img {
+    width: 100%;
+    max-width: 300px; /* Image width for modal */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #333;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    .plant-card {
+        height: auto;
+    }
+
+    .plant-image {
+        height: 150px; /* Smaller height for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust title size on smaller screens */
+    }
+
+    .modal-content {
+        width: 95%; /* Make modal full width on small screens */
+        padding: 20px;
+    }
+
+    .modal-img {
+        max-width: 300px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Herbal Practices</h1>
+        <div class="gallery">
+            <!-- Plant Card -->
+            <div class="plant-card" onclick="showDescription('Banana flower', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7e1Rpa7rc3pCugVzrq1g1G16ehq5d85nqyg&s', ' Rich in fiber, magnesium, and potassium. Improves digestion and reduces anemia.')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7e1Rpa7rc3pCugVzrq1g1G16ehq5d85nqyg&s" alt="Banana flower" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Banana Flower</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Indian Blackberry', 'https://preservawellness.com/cdn/shop/articles/indian_blackberry.jpg?v=1667977491', ' High in vitamin C, iron, and antioxidants. Regulates blood sugar and boosts immunity')">
+                <img src="https://preservawellness.com/cdn/shop/articles/indian_blackberry.jpg?v=1667977491" alt="Black berry" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Black berry</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Cardamom ', 'https://plantskingdom.in/cdn/shop/files/Greencardamomplant-2.jpg?v=1703504916&width=1445', 'Contains essential oils, vitamins, and minerals. Aids digestion and detoxification.')">
+                <img src="https://plantskingdom.in/cdn/shop/files/Greencardamomplant-2.jpg?v=1703504916&width=1445" alt="cardomom" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Cardomom</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Clove ', 'https://rukminim2.flixcart.com/image/850/1000/xif0q/plant-sapling/m/p/g/no-annual-yes-labongo-masla-plants-small-1-grow-bag-corofitam-original-imahyzfgpcx2rsrr.jpeg?q=90&crop=false', ' Rich in manganese, antioxidants, and eugenol. Supports digestion and reduces inflammation.')">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/plant-sapling/m/p/g/no-annual-yes-labongo-masla-plants-small-1-grow-bag-corofitam-original-imahyzfgpcx2rsrr.jpeg?q=90&crop=false" alt="clove" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Clove</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Guduchi', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvl_qWhPVzhJ3CI9EptF7gthrDrYtIz-kQA&s', 'Supports immunity, acts as an anti-inflammatory, and provides essential minerals.')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvl_qWhPVzhJ3CI9EptF7gthrDrYtIz-kQA&s" alt="Sandalwood" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Guduchi</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Saffron', 'https://cdn.shopify.com/s/files/1/0620/2749/7724/files/saffron-crocus-shk-2.jpg?v=1717432444', ' Contains carotenoids, iron, and magnesium. Acts as a mood enhancer and improves digestion.')">
+                <img src="https://cdn.shopify.com/s/files/1/0620/2749/7724/files/saffron-crocus-shk-2.jpg?v=1717432444" alt="Saffron" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Saffron</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Sesame Leaves', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTBPAJ-LLgRL61MCvW-K2RnHdMTgt_jrx-Sw&s', 'High in calcium, fiber, and essential oils. Supports bone health and digestion.')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTBPAJ-LLgRL61MCvW-K2RnHdMTgt_jrx-Sw&s" alt="Manjistha" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Manjistha</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Indian Sorrel', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQU-KnXlQptDJePVB5Dg25DI-YVXikVnXUpw&s', 'Rich in vitamin C, potassium, and oxalates. Boosts immunity and supports digestive health.')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQU-KnXlQptDJePVB5Dg25DI-YVXikVnXUpw&s" alt="Veattiveru" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Indian Sorrel</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Plant Image" class="modal-img">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to show description in modal, display the image, and play the plant name
+function showDescription(plantName, plantImage, plantDescription) {
+    // Set modal content
+    document.getElementById('modalTitle').textContent = plantName;
+    document.getElementById('modalImg').src = plantImage;
+    document.getElementById('modalDescription').textContent = plantDescription;
+    
+    // Display the modal
+    document.getElementById('plantModal').style.display = 'flex';
+    
+    // Speak the plant name
+    playVoice(plantName);
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('plantModal').style.display = 'none';
+}
+
+// Function to play voice
+function playVoice(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US"; // Language
+    window.speechSynthesis.speak(speech);
+}
+
+// Close modal if the user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('plantModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+</script>
+    
+</body>
+</html>
+    

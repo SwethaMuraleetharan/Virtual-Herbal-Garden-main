@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <title>Herbal Plants Gallery</title>
+    <style>
+        /* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #befd8839;
+    padding: 20px;
+}
+
+/* Container for the gallery */
+.gallery-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: normal;
+    color: #044c1998;
+    font-family: 'Pacifico', cursive; /* Apply the new font */
+}
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Limit gallery width to ensure proper scaling on large screens */
+}
+
+/* Plant Card Styling */
+.plant-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.voice-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.voice-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Overlay Effect */
+.plant-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+.plant-card:hover .plant-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Make modal more responsive */
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-img {
+    width: 100%;
+    max-width: 300px; /* Image width for modal */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #333;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    .plant-card {
+        height: auto;
+    }
+
+    .plant-image {
+        height: 150px; /* Smaller height for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust title size on smaller screens */
+    }
+
+    .modal-content {
+        width: 95%; /* Make modal full width on small screens */
+        padding: 20px;
+    }
+
+    .modal-img {
+        max-width: 300px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Haircare Herbs</h1>
+        <div class="gallery">
+            <!-- Plant Card -->
+            <div class="plant-card" onclick="showDescription('Amla', 'https://5.imimg.com/data5/JH/HU/LK/SELLER-30208486/amla-plant.jpg', 'Amla, rich in vitamin C and antioxidants, strengthens hair follicles, reducing hair fall and promoting growth. It conditions the scalp, prevents dandruff, and enhances shine. Regular use of amla helps delay premature graying, keeping hair healthy and vibrant.')">
+                <img src="https://5.imimg.com/data5/JH/HU/LK/SELLER-30208486/amla-plant.jpg" alt="Amla" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Amla</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Shikakai', 'https://nepaldesk.com/sites/default/files/styles/content_image_display_/public/2023-06/Shikakai%20%28Khair%29%20-%20The%20Acacia%20Concinna.jpg?itok=4cDeuADp', 'Shikakai is a natural cleanser that gently removes dirt and oil from the scalp without stripping natural oils. It promotes hair growth by strengthening hair follicles and reducing dandruff. Shikakai also nourishes the hair, adding shine and making it soft and manageable.')">
+                <img src="https://nepaldesk.com/sites/default/files/styles/content_image_display_/public/2023-06/Shikakai%20%28Khair%29%20-%20The%20Acacia%20Concinna.jpg?itok=4cDeuADp" alt="Shikakai" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Shikakai</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Bringraaj', 'https://m.media-amazon.com/images/I/41iYtra4ZGL.jpg', 'Bhringraj is known for its ability to promote hair growth by stimulating the scalp and improving blood circulation. It helps reduce hair fall, prevents premature graying, and strengthens hair follicles. Additionally, bhringraj nourishes the scalp, making hair healthier, shinier, and more vibrant.')">
+                <img src="https://m.media-amazon.com/images/I/41iYtra4ZGL.jpg" alt="Bhringraj" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Bhringraj</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Hibiscus', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK8dJLpO-iDN46rHoIs2gX6aadKuDAirCZJA&s', 'Hibiscus helps promote hair growth by stimulating the scalp and improving blood circulation. It strengthens hair roots, reducing hair fall, and adds a natural shine to hair. Rich in vitamins and antioxidants, hibiscus also prevents dandruff and delays premature graying')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK8dJLpO-iDN46rHoIs2gX6aadKuDAirCZJA&s" alt="Hibiscus" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Hibiscus</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Fenugreek', 'https://media.istockphoto.com/id/1285888022/photo/fenugreek-seeds-and-plant-on-a-old-wooden-background.jpg?s=612x612&w=0&k=20&c=uRUQPgQtEevgbrh4H-Msh5lv7HibigXNIQd9fqfdkRk=', 'Fenugreek is rich in proteins and nicotinic acid, which help strengthen hair and prevent hair fall. It promotes hair growth, conditions the scalp, and reduces dandruff. Additionally, fenugreek improves hair texture, making it softer and shinier.')">
+                <img src="https://media.istockphoto.com/id/1285888022/photo/fenugreek-seeds-and-plant-on-a-old-wooden-background.jpg?s=612x612&w=0&k=20&c=uRUQPgQtEevgbrh4H-Msh5lv7HibigXNIQd9fqfdkRk=" alt="Fenugreek" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Fenugreek</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Henna', 'https://vgrgardens.com/wp-content/uploads/2023/04/henna-maruthani-muligai-buyonline-vgr-gardens-2-scaled-e1681951591468.jpg', 'Henna strengthens and conditions hair, adding shine and smoothness. It helps reduce dandruff and soothes scalp irritation with its antifungal and antibacterial properties. Additionally, henna naturally enhances hair color, giving it a rich, reddish tint while promoting healthy growth.')">
+                <img src="https://vgrgardens.com/wp-content/uploads/2023/04/henna-maruthani-muligai-buyonline-vgr-gardens-2-scaled-e1681951591468.jpg" alt="Henna" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Henna</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Rosemary', 'https://www.gardendesign.com/pictures/images/900x705Max/site_3/rosemary-plant-rosmarinus-shutterstock-com_17869.jpg', 'Rosemary stimulates blood circulation to the scalp, promoting hair growth and preventing hair loss. It strengthens hair follicles, reduces dandruff, and improves scalp health. Additionally, rosemary enhances hair shine and helps delay premature graying by improving overall hair health.')">
+                <img src="https://www.gardendesign.com/pictures/images/900x705Max/site_3/rosemary-plant-rosmarinus-shutterstock-com_17869.jpg" alt="Rosemary" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Rosemary</h3>
+                </div>
+            </div>
+            <div class="plant-card" onclick="showDescription('Neem', 'https://manjariwellness.in/images/neem.jpg', 'Neem promotes healthy hair by strengthening the roots and reducing hair fall. Its antibacterial and antifungal properties help fight dandruff and soothe an itchy scalp. Neem also improves scalp circulation, encouraging hair growth and adding natural shine to the hair.')">
+                <img src="https://manjariwellness.in/images/neem.jpg" alt="Neem" class="plant-image">
+                <div class="plant-overlay">
+                    <h3>Neem</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Plant Image" class="modal-img">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    <script>
+        // Function to show description in modal, display the image, and play the plant name
+function showDescription(plantName, plantImage, plantDescription) {
+    // Set modal content
+    document.getElementById('modalTitle').textContent = plantName;
+    document.getElementById('modalImg').src = plantImage;
+    document.getElementById('modalDescription').textContent = plantDescription;
+    
+    // Display the modal
+    document.getElementById('plantModal').style.display = 'flex';
+    
+    // Speak the plant name
+    playVoice(plantName);
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('plantModal').style.display = 'none';
+}
+
+// Function to play voice
+function playVoice(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US"; // Language
+    window.speechSynthesis.speak(speech);
+}
+
+// Close modal if the user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('plantModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+</script>
+    
+</body>
+</html>

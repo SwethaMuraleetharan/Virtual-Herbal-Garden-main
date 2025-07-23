@@ -1,0 +1,37 @@
+{
+  "name": "virtual-herbal-garden-main",
+  "version": "1.0.0",
+  "description": "The Virtual Herbal Garden is an under-development web application developed as part of the Smart India Hackathon. The application serves as an interactive and educational platform to explore medicinal plants, bridging the gap between traditional herbal practices and modern technology and providing users with various skin -care, hair-care tip, nutritional guidance and much more. # Features *Interactive 3D Models: Explore detailed 3D models of medicinal plants. *Comprehensive Information: Learn about the uses, benefits, and properties of various medicinal plantsin terms of skin-care,hair-care,nutritional guidance, fitness. *Multimedia Integration: Watch videos and view images related to herbal practices. *Search and Filter Options: Easily find specific plants or categories. *User Interaction: Engage with content through quizzes, user submissions, and more.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "lucide-react": "^0.460.0",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.15"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
