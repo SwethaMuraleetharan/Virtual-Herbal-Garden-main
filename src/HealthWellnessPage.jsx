@@ -27,7 +27,7 @@ const HealthWellnessPage = () => {
   ];
 
   const brands = [
-    { name: "Skin Care", url: "skincare.html", logo: "https://img.freepik.com/premium-vector/portrait-girl-cleaning-facial-skin-with-foam-step-daily-cleansing-routine_88272-8318.jpg?semt=ais_hybrid" },
+    { name: "Skin Care", url: "/skin", logo: "https://img.freepik.com/premium-vector/portrait-girl-cleaning-facial-skin-with-foam-step-daily-cleansing-routine_88272-8318.jpg?semt=ais_hybrid" },
     { name: "Hair Care", url: "haircare.html", logo: "https://clipart-library.com/img/1621871.jpg" },
     { name: "Cultivation and History", url: "culti.html", logo: "https://thedailytexan.com/wp-content/uploads/2018/11/Aztec_1101_LaurenIbanez301Aztec-900x600.jpg" },
     { name: "Nutrition", url: "nutrition.html", logo: "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1fb996e4-2328-46dd-b5f5-bbba631e0806_1927x1943.jpeg" },

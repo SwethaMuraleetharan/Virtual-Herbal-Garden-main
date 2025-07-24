@@ -5,6 +5,7 @@ import HomePage from './HomePage';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
 import HerbalQuiz from './pages/quiz';
+import Skincare from './pages/SkinCare';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/quiz" element={<HerbalQuiz />} />
+        <Route path="/skin" element={<Skincare />} />
       </Routes>
     </Router>
   );
