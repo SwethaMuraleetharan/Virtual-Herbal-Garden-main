@@ -4,6 +4,7 @@ import HealthWellnessPage from './HealthWellnessPage';
 import HomePage from './HomePage';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
+import HerbalQuiz from './pages/quiz';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/health-wellness" element={<HealthWellnessPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/quiz" element={<HerbalQuiz />} />
       </Routes>
     </Router>
   );

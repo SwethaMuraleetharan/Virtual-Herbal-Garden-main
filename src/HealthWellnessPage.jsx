@@ -51,7 +51,7 @@ const HealthWellnessPage = () => {
             <ul className="flex space-x-6 text-gray-600">
               <li><Link to="/" className="hover:text-green-300">Home</Link></li>
               <li><Link to="/about" className="hover:text-green-300">About Us</Link></li>
-              <li><a href="quiz.html" className="hover:text-green-300">Quiz</a></li>
+              <li><Link to="/quiz" className="hover:text-green-300">Quiz</Link></li>
               <li><Link to="/contact" className="hover:text-green-300">Contact</Link></li>
             </ul>
           </nav>
