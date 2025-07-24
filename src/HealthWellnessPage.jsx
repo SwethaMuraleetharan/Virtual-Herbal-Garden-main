@@ -49,8 +49,8 @@ const HealthWellnessPage = () => {
           <img src="https://img.freepik.com/free-vector/plant-white_1308-41021.jpg?semt=ais_hybrid" alt="Logo" className="h-8" />
           <nav>
             <ul className="flex space-x-6 text-gray-600">
-              <li><a href="/home" className="hover:text-green-300">Home</a></li>
-              <li><a href="about.html" className="hover:text-green-300">About Us</a></li>
+              <li><Link to="/" className="hover:text-green-300">Home</Link></li>
+              <li><Link to="/about" className="hover:text-green-300">About Us</Link></li>
               <li><a href="quiz.html" className="hover:text-green-300">Quiz</a></li>
               <li><a href="contact.html" className="hover:text-green-300">Contact</a></li>
             </ul>
