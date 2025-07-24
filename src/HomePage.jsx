@@ -65,11 +65,11 @@ const HomePage = () => {
                     Explore
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300" />
                   </a></li>
-                  <li><a href="about.html" className="relative text-white hover:text-emerald-300 transition-colors duration-300 font-medium group">
+                  <li><a href="/about" className="relative text-white hover:text-emerald-300 transition-colors duration-300 font-medium group">
                     About
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300" />
                   </a></li>
-                  <li><a href="contact.html" className="relative text-white hover:text-emerald-300 transition-colors duration-300 font-medium group">
+                  <li><a href="/contact" className="relative text-white hover:text-emerald-300 transition-colors duration-300 font-medium group">
                     Contact
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300" />
                   </a></li>
