@@ -102,7 +102,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800">Email</p>
-                    <p className="text-emerald-600">info@virtualherbal.com</p>
+                    <p className="text-emerald-600">info@digitalherbarium.com</p>
                   </div>
                 </div>
                 
@@ -112,7 +112,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800">Phone</p>
-                    <p className="text-green-600">+91 98765 43210</p>
+                    <p className="text-green-600">+91 87784 95306</p>
                   </div>
                 </div>
                 

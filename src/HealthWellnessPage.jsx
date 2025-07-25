@@ -315,7 +315,7 @@ const HealthWellnessPage = () => {
                 <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
                   <Leaf className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold">HerbalWise</h3>
+                <h3 className="text-2xl font-bold">Digital Herbarium</h3>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Connecting you with nature's wisdom for holistic health and wellness. 
@@ -347,7 +347,7 @@ const HealthWellnessPage = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-green-400" />
-                  <span className="text-gray-300">info@herbalwise.com</span>
+                  <span className="text-gray-300">info@digitalherbarium.com</span>
                 </div>
               </div>
             </div>
@@ -366,7 +366,7 @@ const HealthWellnessPage = () => {
 
           <div className="border-t border-gray-700 mt-12 pt-8 text-center">
             <p className="text-gray-400">
-              © 2024 HerbalWise. All rights reserved. | Nurturing wellness through nature's wisdom.
+              © 2024 Digital Herbarium. All rights reserved. | Nurturing wellness through nature's wisdom.
             </p>
           </div>
         </div>
